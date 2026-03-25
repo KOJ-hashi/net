@@ -1,0 +1,25 @@
+#include "mbed.h"
+#include "EthernetInterface.h"
+#include <cstdio>
+
+int main() {
+    EthernetInterface net;
+
+    // ネット接続
+    if (net.connect() != 0) {
+        printf("Network Error\r\n");
+        return -1;
+    }
+
+    // IP取得
+    SocketAddress ip;
+    net.get_ip_address(&ip);
+
+    // ★ これだけ表示
+    printf("IP: %s\r\n", ip.get_ip_address());
+
+    // 何もしない
+    while (true) {
+        ThisThread::sleep_for(1s);
+    }
+}
