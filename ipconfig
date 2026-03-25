@@ -1,0 +1,14 @@
+#include "mbed.h"
+#include "net.h"
+
+Net net;
+
+int main() {
+    net.start();   // 接続待ち
+
+    net.send_ip(); // IP送信
+
+    while (true) {
+        ThisThread::sleep_for(1s);
+    }
+}
